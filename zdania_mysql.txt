@@ -80,3 +80,28 @@
 | Bingo        | maly          | 1264-11-11     |           100 |
 | Eureka       | duzy          | 1284-12-12     |            50 |
 +--------------+---------------+----------------+---------------+
+
++--------------+---------------------------------+------+-----+---------+----------------+
+| Field        | Type                            | Null | Key | Default | Extra          |
++--------------+---------------------------------+------+-----+---------+----------------+
+| id_postaci   | int                             | NO   | PRI | NULL    | auto_increment |
+| nazwa        | varchar(40)                     | YES  |     | NULL    |                |
+| rodzaj       | enum('wiking','ptak','kobieta') | YES  |     | NULL    |                |
+| data_ur      | date                            | YES  |     | NULL    |                |
+| wiek         | int unsigned                    | YES  |     | NULL    |                |
+| funkcja      | varchar(20)                     | YES  |     | NULL    |                |
+| nazwa_statku | varchar(20)                     | YES  | MUL | NULL    |                |
++--------------+---------------------------------+------+-----+---------+----------------+
+
++------------+----------+---------+------------+------+---------+--------------+
+| id_postaci | nazwa    | rodzaj  | data_ur    | wiek | funkcja | nazwa_statku |
++------------+----------+---------+------------+------+---------+--------------+
+|          1 | Bjorn    | wiking  | 1234-10-10 |   34 | kapitan | Eureka       |
+|          2 | Drozd    | ptak    | 1250-10-10 |    5 | NULL    | NULL         |
+|          3 | Tesciowa | kobieta | 1221-10-10 |   88 | NULL    | NULL         |
+|          4 | Thor     | wiking  | 1234-11-11 |   54 | NULL    | Eureka       |
+|          5 | Pioter   | wiking  | 1243-12-12 |   43 | NULL    | Eureka       |
+|          6 | Grzesiek | wiking  | 1222-10-10 |   56 | NULL    | Eureka       |
+|          7 | Andrzej  | wiking  | 1254-06-06 |   22 | NULL    | Eureka       |
+|          8 | Leonard  | wiking  | 1232-07-07 |   34 | NULL    | Eureka       |
++------------+----------+---------+------------+------+---------+--------------+
