@@ -1,0 +1,40 @@
+ALTER TABLE przetwory
+ADD FOREIGN KEY (id_wykonawcy) REFERENCES postac(id_postaci);
+
+ALTER TABLE przetwory
+ADD FOREIGN KEY (id_konsumenta) REFERENCES postac(id_postaci);
+
+INSERT INTO przetwory (id_przetworu, rok_produkcji, id_wykonawcy, zawartosc, dodatek, id_konsumenta) VALUES (1, 1954, 1, bigos, papryczka chilli, 2);
+
+INSERT INTO postac (id_postaci, nazwa, rodzaj, data_ur, wiek) VALUES
+("4", "Thor", "wiking", "1234-11-11", "54"),
+("5", "Pioter", "wiking", "1243-12-12", "43"),
+("6", "Grzesiek", "wiking", "1222-10-10", "56"),
+("7", "Andrzej", "wiking", "1254-6-6", "22"),
+("8", "Leonard", "wiking", "1232-7-7", "34");
+
+CREATE TABLE statek
+(nazwa_statku PRIMARY KEY,
+rodzaj_statku ENUM(),
+data_wodowania DATE,
+max_ladownosc INT UNSIGNED);
+
+INSERT INTO statek (nazwa_statku, rodzaj_statku, data_wodowania, max_ladownosc) VALUES
+("Eureka", "","1284-12-12","50"),
+("Bingo", "","1264-11-11","100");
+
+ALTER TABLE postac ADD funkcja VARCHAR(20);
+
+UPDATE postac SET funkcja="kapitan" WHERE nazwa="Bjorn";
+
+ALTER TABLE postac ADD nazwa_statku VARCHAR(20);
+
+ALTER TABLE postac ADD FOREIGN KEY (nazwa_statku) REFERENCES statek(nazwa_statku);
+
+UPDATE postac SET nazwa_statku="Eureka" WHERE rodzaj="wiking";
+
+UPDATE postac SET nazwa_statku="Bingo" WHERE rodzaj="drozd";
+
+DELETE FROM izba WHERE nazwa_izby="spizarnia";
+
+DELETE TABLE izba;
