@@ -53,8 +53,30 @@
 +---------------+-------------+------+-----+-----------------------------+-------------------+
 | id_przetworu  | int         | NO   | PRI | NULL                        |                   |
 | rok_produkcji | year        | YES  |     | _latin1\'1654\'             | DEFAULT_GENERATED |
-| id_wykonawcy  | int         | YES  |     | NULL                        |                   |
+| id_wykonawcy  | int         | YES  | MUL | NULL                        |                   |
 | zawartosc     | varchar(50) | YES  |     | NULL                        |                   |
 | dodatek       | varchar(50) | YES  |     | _latin1\'papryczka chilli\' | DEFAULT_GENERATED |
-| id_konsumenta | int         | YES  |     | NULL                        |                   |
+| id_konsumenta | int         | YES  | MUL | NULL                        |                   |
 +---------------+-------------+------+-----+-----------------------------+-------------------+
+
++--------------+---------------+--------------+-----------+------------------+---------------+
+| id_przetworu | rok_produkcji | id_wykonawcy | zawartosc | dodatek          | id_konsumenta |
++--------------+---------------+--------------+-----------+------------------+---------------+
+|            1 |          1954 |            1 | bigos     | papryczka chilli |             2 |
++--------------+---------------+--------------+-----------+------------------+---------------+
+
++----------------+---------------------+------+-----+---------+-------+
+| Field          | Type                | Null | Key | Default | Extra |
++----------------+---------------------+------+-----+---------+-------+
+| nazwa_statku   | varchar(20)         | NO   | PRI | NULL    |       |
+| rodzaj_statku  | enum('duzy','maly') | YES  |     | NULL    |       |
+| data_wodowania | date                | YES  |     | NULL    |       |
+| max_ladownosc  | int unsigned        | YES  |     | NULL    |       |
++----------------+---------------------+------+-----+---------+-------+
+
++--------------+---------------+----------------+---------------+
+| nazwa_statku | rodzaj_statku | data_wodowania | max_ladownosc |
++--------------+---------------+----------------+---------------+
+| Bingo        | maly          | 1264-11-11     |           100 |
+| Eureka       | duzy          | 1284-12-12     |            50 |
++--------------+---------------+----------------+---------------+
