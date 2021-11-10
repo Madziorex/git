@@ -1,0 +1,33 @@
+DELETE FROM postac WHERE id_postaci="6" OR id_postaci="8";
+
+ALTER TABLE walizka DROP FOREIGN KEY walizka_ibfk_1;
+
+ALTER TABLE przetwory DROP FOREIGN KEY przetwory_ibfk_1;
+
+ALTER TABLE przetwory DROP FOREIGN KEY przetwory_ibfk_2;
+
+ALTER TABLE postac MODIFY id_postaci INT NOT NULL;
+
+ALTER TABLE postac DROP PRIMARY KEY;
+
+ALTER TABLE postac ADD pesel VARCHAR(11);
+
+ALTER TABLE postac ADD PRIMARY KEY(pesel);
+
+ALTER TABLE postac MODIFY rodzaj ENUM('wiking','ptak','kobieta','syrena');
+
+insert into postac values ('8','Gertruda Nieszczera','syrena','1200-12-12','100','','Eureka','888888888
+88');
+
+UPDATE postac SET nazwa_statku='Eureka' WHERE nazwa='*a*';
+
+UPDATE statek SET max_ladownosc=max_ladownosc*0.7 WHERE data_wodowania BETWEEN '1901-01-01' AND '2000-12-30';
+
+SELECT * FROM postac WHERE wiek<1001;
+
+insert into postac values ('9','Loko','wiking','1100-10-10','1002','','','99999999999');
+
+CREATE TABLE marynarz (id_postaci INT NOT NULL, nazwa VARCHAR(40), rodzaj ENUM('wiking','syrena','kobieta','ptak'), data_ur DATE, wiek INT UNSIGNED, funkcja VARCHAR(20), nazwa_statku VARCHAR(20), pesel VARCHAR(11));
+
+INSERT INTO marynarz(id_postaci,nazwa,rodzaj,data_ur,wiek,funkcja,nazwa_statku,pesel)
+SELECT (id_postaci,nazwa,rodzaj,data_ur,wiek,funkcja,nazwa_statku,pesel) FROM postac WHERE nazwa_statku!=NULL;
