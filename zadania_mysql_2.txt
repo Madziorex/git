@@ -31,3 +31,5 @@ CREATE TABLE marynarz (id_postaci INT NOT NULL, nazwa VARCHAR(40), rodzaj ENUM('
 
 INSERT INTO marynarz(id_postaci,nazwa,rodzaj,data_ur,wiek,funkcja,nazwa_statku,pesel)
 SELECT (id_postaci,nazwa,rodzaj,data_ur,wiek,funkcja,nazwa_statku,pesel) FROM postac WHERE nazwa_statku!=NULL;
+
+INSERT INTO marynarz SELECT * FROM postac WHERE nazwa_statku!=NULL;
