@@ -29,7 +29,24 @@ insert into postac values ('9','Loko','wiking','1100-10-10','1002','','','999999
 
 CREATE TABLE marynarz (id_postaci INT NOT NULL, nazwa VARCHAR(40), rodzaj ENUM('wiking','syrena','kobieta','ptak'), data_ur DATE, wiek INT UNSIGNED, funkcja VARCHAR(20), nazwa_statku VARCHAR(20), pesel VARCHAR(11));
 
-INSERT INTO marynarz(id_postaci,nazwa,rodzaj,data_ur,wiek,funkcja,nazwa_statku,pesel)
-SELECT (id_postaci,nazwa,rodzaj,data_ur,wiek,funkcja,nazwa_statku,pesel) FROM postac WHERE nazwa_statku!=NULL;
+INSERT INTO marynarz SELECT * FROM postac WHERE nazwa_statku IS NOT NULL;
 
-INSERT INTO marynarz SELECT * FROM postac WHERE nazwa_statku!=NULL;
+ADD FOREIGN KEY nazwa_statku REFERENCES statek(nazwa_statku);
+
+ALTER TABLE marynarz ADD FOREIGN KEY (nazwa_statku) REFERENCES statek(nazwa_statku);
+
+ALTER TABLE marynarz ADD PRIMARY KEY (id_postaci);
+
+ALTER TABLE marynarz DROP FOREIGN KEY marynarz_ibfk_1;
+
+UPDATE marynarz SET nazwa_statku="";
+
+DELETE FROM marynarz where id_postaci="7";
+
+DELETE FROM statek;
+
+DROP TABLE statek;
+
+CREATE TABLE zwierz(id INT PRIMARY KEY AUTO_INCREMENT, nazwa VARCHAR(40), wiek INT);
+
+INSERT INTO zwierz SELECT id_postaci, nazwa, wiek FROM postac WHERE rodzaj='ptak';
