@@ -1,0 +1,27 @@
+zad1
+SELECT SUM(waga)/COUNT(nazwa) FROM kreatura WHERE rodzaj='wiking';
+
+SELECT rodzaj, SUM(waga)/COUNT(nazwa), COUNT(nazwa) AS liczba FROM kreatura GROUP BY rodzaj;
+
+	SELECT rodzaj,  FROM kreatura GROUP BY rodzaj;
+
+zad2
+SELECT rodzaj, SUM(waga) FROM zasob GROUP BY rodzaj;
+
+SELECT nazwa, waga/ilosc AS sredniaWaga FROM zasob WHERE ilosc>3 AND waga>10;
+
+SELECT rodzaj, COUNT(nazwa) FROM zasob WHERE ilosc>1 GROUP BY rodzaj;
+
+zad3
+SELECT kreatura.nazwa, ekwipunek.ilosc FROM kreatura INNER JOIN ekwipunek ON kreatura.idKreatury=ekwipunek.idKreatury;
+
+SELECT kreatura.nazwa, zasob.nazwa FROM kreatura INNER JOIN ekwipunek ON kreatura.idKreatury=ekwipunek.idKreatury INNER JOIN zasob ON ekwipunek.idZasobu=zasob.idZasobu;
+
+	SELECT kreatura.nazwa FROM kreatura LEFT JOIN ekwipunek ON kreatura.idKreatury=ekwipunek.idKreatury group by kreatura.nazwa;
+
+zad4
+SELECT kreatura.nazwa, zasob.nazwa FROM kreatura INNER JOIN ekwipunek ON kreatura.idKreatury=ekwipunek.idKreatury INNER JOIN zasob ON ekwipunek.idZasobu=zasob.idZasobu  WHERE kreatura.rodzaj='wiking' AND kreatura.dataUr BETWEEN '1670-01-01' AND '1679-12-31';
+
+SELECT kreatura.nazwa FROM kreatura INNER JOIN ekwipunek ON kreatura.idKreatury=ekwipunek.idKreatury INNER JOIN zasob ON ekwipunek.idZasobu=zasob.idZasobu WHERE zasob.rodzaj='jedzenie' ORDER BY kreatura.dataUr DESC LIMIT 5;
+
+	SELECT * FROM kreatura WHERE ;
