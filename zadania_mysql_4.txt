@@ -17,7 +17,7 @@ SELECT kreatura.nazwa, ekwipunek.ilosc FROM kreatura INNER JOIN ekwipunek ON kre
 
 SELECT kreatura.nazwa, zasob.nazwa FROM kreatura INNER JOIN ekwipunek ON kreatura.idKreatury=ekwipunek.idKreatury INNER JOIN zasob ON ekwipunek.idZasobu=zasob.idZasobu;
 
-	SELECT kreatura.nazwa FROM kreatura LEFT JOIN ekwipunek ON kreatura.idKreatury=ekwipunek.idKreatury group by kreatura.nazwa;
+SELECT kreatura.nazwa FROM kreatura LEFT JOIN ekwipunek ON kreatura.idKreatury=ekwipunek.idKreatury WHERE ekwipunek.idZasobu IS NULL GROUP BY kreatura.nazwa;
 
 zad4
 SELECT kreatura.nazwa, zasob.nazwa FROM kreatura INNER JOIN ekwipunek ON kreatura.idKreatury=ekwipunek.idKreatury INNER JOIN zasob ON ekwipunek.idZasobu=zasob.idZasobu  WHERE kreatura.rodzaj='wiking' AND kreatura.dataUr BETWEEN '1670-01-01' AND '1679-12-31';
@@ -25,3 +25,8 @@ SELECT kreatura.nazwa, zasob.nazwa FROM kreatura INNER JOIN ekwipunek ON kreatur
 SELECT kreatura.nazwa FROM kreatura INNER JOIN ekwipunek ON kreatura.idKreatury=ekwipunek.idKreatury INNER JOIN zasob ON ekwipunek.idZasobu=zasob.idZasobu WHERE zasob.rodzaj='jedzenie' ORDER BY kreatura.dataUr DESC LIMIT 5;
 
 	SELECT * FROM kreatura WHERE ;
+
+zad5
+	SELECT kreatura.rodzaj, AVG(zasob.waga) FROM kreatura INNER JOIN ekwipunek ON kreatura.idKreatury=ekwipunek.idKreatury INNER JOIN zasob ON ekwipunek.idZasobu=zasob.idZasobu WHERE kreatura.rodzaj!='malpa' OR kreatura.rodzaj!='waz' AND zasob.ilosc<30;
+
+	SELECT rodzaj, nazwa, dataUr, min(dataUr), max(dataUr) FROM kreatura GROUP BY rodzaj;
